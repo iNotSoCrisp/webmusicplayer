@@ -1,0 +1,19 @@
+/* App-specific styles can be added here if needed */
+
+/* Basic CSS variables - most styles are in custom.css */
+:root {
+  /* Torch Red & Coconut Cream theme */
+  --primary: #FF0039; /* Torch Red */
+  --secondary: #FFFCEE; /* Coconut Cream */
+  --accent: #FFC107; /* Amber accent for highlights */
+}
+
+/* Backup fallbacks if custom.css is not loaded */
+:root {
+  --background-dark: #0f1120;
+  --background-medium: #1c2042;
+  --background-light: #252a3d;
+  --text-primary: #FFFCEE;
+  --text-secondary: #CCCCCC;
+  --text-dark: #333333;
+}
