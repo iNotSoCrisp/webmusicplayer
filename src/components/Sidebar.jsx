@@ -1,13 +1,39 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FaHome, FaSearch, FaStream, FaBars, FaTimes } from 'react-icons/fa';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 
 function Sidebar() {
   const [isExpanded, setIsExpanded] = useState(false);
+  const location = useLocation();
+  const isMobile = window.innerWidth <= 768;
 
   const toggleSidebar = () => {
     setIsExpanded(!isExpanded);
   };
+
+  // Close sidebar when route changes on mobile
+  useEffect(() => {
+    if (isMobile) {
+      setIsExpanded(false);
+    }
+  }, [location, isMobile]);
+
+  // Close sidebar when clicking outside on mobile
+  useEffect(() => {
+    if (!isMobile) return;
+
+    const handleClickOutside = (event) => {
+      const sidebar = document.querySelector('.sidebar');
+      if (sidebar && !sidebar.contains(event.target) && isExpanded) {
+        setIsExpanded(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isExpanded, isMobile]);
 
   return (
     <div className={`sidebar ${isExpanded ? 'expanded' : ''}`}>
