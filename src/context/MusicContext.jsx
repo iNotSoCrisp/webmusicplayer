@@ -1,9 +1,12 @@
-import { createContext, useState, useContext, useEffect } from 'react';
+import { createContext, useState, useContext, useEffect, useRef } from 'react';
 import { currentSong as initialSong } from '../data/musicData';
 import { streamableSongs } from '../data/cloudinaryData';
 import spotifyService from '../services/spotify';
 
 const MusicContext = createContext();
+
+// Export the hook at the top level for better HMR compatibility
+export const useMusic = () => useContext(MusicContext);
 
 export function MusicProvider({ children }) {
   // Player state
@@ -236,8 +239,4 @@ export function MusicProvider({ children }) {
   };
 
   return <MusicContext.Provider value={value}>{children}</MusicContext.Provider>;
-}
-
-export function useMusic() {
-  return useContext(MusicContext);
 }
