@@ -39,7 +39,7 @@ function Sidebar() {
     <div className={`sidebar ${isExpanded ? 'expanded' : ''}`}>
       <div className="logo" onClick={toggleSidebar}>
         <FaStream size={24} />
-        <span>Musicify</span>
+        <span>BeatProbe</span>
         <div className="mobile-toggle">
           {isExpanded ? <FaTimes size={20} /> : <FaBars size={20} />}
         </div>

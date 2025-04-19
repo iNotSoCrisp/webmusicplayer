@@ -10,37 +10,37 @@ export const streamableSongs = [
   },
   {
     id: "cloud2",
-    title: "Mountain Echo",
-    artist: "Alpine Sounds",
-    cover: "https://res.cloudinary.com/demo/image/upload/v1577821718/samples/landscapes/nature-mountains.jpg",
-    audioUrl: "https://res.cloudinary.com/demo/video/upload/v1610445574/samples/sea-turtle.mp4" // Replace with your actual audio URL
+    title: "In the End",
+    artist: "Linkin Park",
+    cover: "https://res.cloudinary.com/dkyknciiv/image/upload/v1745064544/juky0mliph6rly0bkfo5.jpg",
+    audioUrl: "https://res.cloudinary.com/dkyknciiv/video/upload/v1745064260/In_The_End_Official_HD_Music_Video_-_Linkin_Park_oyf6r3.mp3" // Replace with your actual audio URL
   },
   {
     id: "cloud3",
-    title: "Urban Rhythm",
-    artist: "City Beats",
-    cover: "https://res.cloudinary.com/demo/image/upload/v1577821718/samples/landscapes/architecture-signs.jpg",
-    audioUrl: "https://res.cloudinary.com/demo/video/upload/v1610445574/samples/sea-turtle.mp4" // Replace with your actual audio URL
+    title: "Perfect",
+    artist: "Ed Sheeran",
+    cover: "https://res.cloudinary.com/dkyknciiv/image/upload/v1745064765/ycbch3kd4pxb6jyrqc0y.jpg",
+    audioUrl: "https://res.cloudinary.com/dkyknciiv/video/upload/v1745064257/Ed_Sheeran_-_Perfect_Official_Lyric_Video_wzabo4.mp3" // Replace with your actual audio URL
   },
   {
     id: "cloud4",
-    title: "Forest Dreams",
-    artist: "Woodland Whispers",
-    cover: "https://res.cloudinary.com/demo/image/upload/v1577821718/samples/landscapes/nature-mountains.jpg",
-    audioUrl: "https://res.cloudinary.com/demo/video/upload/v1610445574/samples/sea-turtle.mp4" // Replace with your actual audio URL
+    title: "Kaaghaz Ka Ghar",
+    artist: "Jani",
+    cover: "https://res.cloudinary.com/dkyknciiv/image/upload/v1745065427/hqdefault_dtkgoh.jpg",
+    audioUrl: "https://res.cloudinary.com/dkyknciiv/video/upload/v1745065378/JANI_-_Kaaghaz_Ka_Ghar_da2jxu.mp3" // Replace with your actual audio URL
   },
   {
     id: "cloud5",
-    title: "Sunset Melody",
-    artist: "Horizon",
-    cover: "https://res.cloudinary.com/demo/image/upload/v1577821718/samples/food/dessert.jpg",
-    audioUrl: "https://res.cloudinary.com/demo/video/upload/v1610445574/samples/sea-turtle.mp4" // Replace with your actual audio URL
+    title: "Tum Tak",
+    artist: "A.R. Rahman",
+    cover: "https://res.cloudinary.com/dkyknciiv/image/upload/v1745065169/cz0avrqwzrjsqdsczzx4.jpg",
+    audioUrl: "https://res.cloudinary.com/dkyknciiv/video/upload/v1745065034/A.R._Rahman_-_Tum_Tak_Lyric_Video_Raanjhanaa_A._R._Rahman_Dhanush_Sonam_Kapoor_Javed_Ali_amakba.mp3" // Replace with your actual audio URL
   },
   {
     id: "cloud6",
-    title: "Rainy Day",
-    artist: "Water Drops",
-    cover: "https://res.cloudinary.com/demo/image/upload/v1577821718/samples/animals/three-dogs.jpg",
-    audioUrl: "https://res.cloudinary.com/demo/video/upload/v1610445574/samples/sea-turtle.mp4" // Replace with your actual audio URL
+    title: "Memories",
+    artist: "Maroon 5",
+    cover: "https://res.cloudinary.com/dkyknciiv/image/upload/v1745065144/cz561tmjgieyarer12s0.jpg",
+    audioUrl: "https://res.cloudinary.com/dkyknciiv/video/upload/v1745064260/Maroon_5_-_Memories_Official_Video_a2f7k1.mp3" // Replace with your actual audio URL
   }
 ];

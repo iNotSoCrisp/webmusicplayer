@@ -16,7 +16,7 @@ function SearchPage() {
   const [animatedResults, setAnimatedResults] = useState([]);
   const [hoveredTrack, setHoveredTrack] = useState(null);
 
-  // Animate search results when they change
+ 
   useEffect(() => {
     setAnimatedResults([]);
 

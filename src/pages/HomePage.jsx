@@ -5,7 +5,7 @@ function HomePage() {
   return (
     <div className="home-page-container">
       <div className="page-header">
-        <h1 className="page-title">Welcome to Musicify</h1>
+        <h1 className="page-title">Welcome to BeatProbe</h1>
         <p className="page-subtitle">Your modern music streaming platform</p>
       </div>
 
