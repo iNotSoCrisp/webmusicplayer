@@ -1,9 +1,15 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaGithub, FaMusic } from 'react-icons/fa';
 
 function LandingPage() {
   const navigate = useNavigate();
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+
+  const videoConfig = {
+    url: "https://res.cloudinary.com/dkyknciiv/video/upload/v1745883004/2984380-hd_1920_1080_24fps_pi0cyj.mp4",
+    fallbackImage: "/assets/lofi-desk-bg.jpg"
+  };
 
   useEffect(() => {
     // Parallax effect on scroll
@@ -44,6 +50,20 @@ function LandingPage() {
 
   return (
     <div className="landing-page">
+      <div className="video-background">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className={`background-video ${isVideoLoaded ? 'loaded' : ''}`}
+          poster={videoConfig.fallbackImage}
+          onLoadedData={() => setIsVideoLoaded(true)}
+        >
+          <source src={videoConfig.url} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
       <div className="landing-overlay"></div>
 
       <div className="hero-section">
@@ -83,35 +103,6 @@ function LandingPage() {
           <div className="parallax-item parallax plant-left" data-speed="0.1"></div>
           <div className="parallax-item parallax plant-right" data-speed="0.15"></div>
           <div className="parallax-item parallax window-light" data-speed="-0.05"></div>
-        </div>
-      </div>
-
-      <div className="features-section">
-        <div className="feature fade-in">
-          <div className="feature-icon-container">
-            <div className="feature-icon-bg"></div>
-            <FaMusic className="feature-icon" />
-          </div>
-          <h3>Curated Playlists</h3>
-          <p>Specially designed music collections to enhance your mood and productivity</p>
-        </div>
-
-        <div className="feature fade-in">
-          <div className="feature-icon-container">
-            <div className="feature-icon-bg"></div>
-            <FaGithub className="feature-icon" />
-          </div>
-          <h3>Open Source</h3>
-          <p>Built with transparency and collaboration at its core</p>
-        </div>
-
-        <div className="feature fade-in">
-          <div className="feature-icon-container">
-            <div className="feature-icon-bg"></div>
-            <FaMusic className="feature-icon" />
-          </div>
-          <h3>Music Library</h3>
-          <p>Access a vast collection of carefully selected tracks for every moment</p>
         </div>
       </div>
     </div>
