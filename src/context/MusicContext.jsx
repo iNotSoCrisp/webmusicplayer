@@ -5,11 +5,11 @@ import spotifyService from '../services/spotify';
 
 const MusicContext = createContext();
 
-// Export the hook at the top level for better HMR compatibility
+
 export const useMusic = () => useContext(MusicContext);
 
 export function MusicProvider({ children }) {
-  // Player state
+
   const [currentSong, setCurrentSong] = useState(initialSong);
   const [isPlaying, setIsPlaying] = useState(false);
   const [volume, setVolume] = useState(70);
@@ -19,18 +19,18 @@ export function MusicProvider({ children }) {
   const [duration, setDuration] = useState(initialSong.duration);
   const [currentAudio, setCurrentAudio] = useState(null);
 
-  // Spotify data (search only, no playback)
+  // Spotify data search karo bajne toh wala hai nahi
   const [searchResults, setSearchResults] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  // Cloudinary streamable songs
+  // streamable songs (asli maal)
   const [cloudinarySongs, setCloudinarySongs] = useState(streamableSongs);
   const [filteredCloudinarySongs, setFilteredCloudinarySongs] = useState(streamableSongs);
   const [cloudinarySearchQuery, setCloudinarySearchQuery] = useState('');
 
-  // Handle search for Spotify
+  // Handle search for Spotify wala
   useEffect(() => {
     const searchTimer = setTimeout(async () => {
       if (searchQuery.trim()) {
@@ -53,7 +53,7 @@ export function MusicProvider({ children }) {
     return () => clearTimeout(searchTimer);
   }, [searchQuery]);
 
-  // Handle search for Cloudinary songs
+  // Handle search for asli maal
   useEffect(() => {
     if (cloudinarySearchQuery.trim()) {
       const lowerCaseQuery = cloudinarySearchQuery.toLowerCase();
@@ -68,18 +68,18 @@ export function MusicProvider({ children }) {
     }
   }, [cloudinarySearchQuery]);
 
-  // Handle audio playback time updates
+
   useEffect(() => {
     let interval;
     if (isPlaying) {
       interval = setInterval(() => {
         if (currentAudio) {
-          // Use actual audio progress
+
           const audioProgress = (currentAudio.currentTime / currentAudio.duration) * 100;
           setProgress(audioProgress);
           setCurrentTime(convertSecondsToTime(Math.floor(currentAudio.currentTime)));
         } else {
-          // Fallback to simulated progress
+
           setProgress(prev => {
             const newProgress = prev + 0.5;
             if (newProgress >= 100) {
@@ -94,7 +94,7 @@ export function MusicProvider({ children }) {
     return () => clearInterval(interval);
   }, [isPlaying, currentAudio]);
 
-  // Clean up audio when unmounting
+
   useEffect(() => {
     return () => {
       if (currentAudio) {
@@ -159,7 +159,7 @@ export function MusicProvider({ children }) {
   };
 
   const playSong = (song) => {
-    // Clean up previous audio
+
     if (currentAudio) {
       currentAudio.pause();
       currentAudio.src = '';
@@ -167,7 +167,7 @@ export function MusicProvider({ children }) {
 
     setCurrentSong(song);
 
-    // If we have an audio URL (for Cloudinary songs), play it
+
     if (song.audioUrl) {
       const audio = new Audio(song.audioUrl);
       audio.volume = volume / 100;
@@ -184,7 +184,7 @@ export function MusicProvider({ children }) {
 
       setCurrentAudio(audio);
 
-      // Try to play (might be blocked by browser)
+
       audio.play().catch(err => {
         console.error("Error playing audio:", err);
         setError("Couldn't autoplay. Click play to start.");
@@ -192,7 +192,7 @@ export function MusicProvider({ children }) {
       setIsPlaying(true);
     } else {
       setCurrentAudio(null);
-      // For Spotify tracks, we can't play them, so just update the UI
+
       setIsPlaying(false);
     }
 
@@ -207,8 +207,16 @@ export function MusicProvider({ children }) {
     setCloudinarySearchQuery(query);
   };
 
+  const playRandomSong = () => {
+    if (cloudinarySongs.length > 0) {
+      const randomIndex = Math.floor(Math.random() * cloudinarySongs.length);
+      const randomSong = cloudinarySongs[randomIndex];
+      playSong(randomSong);
+    }
+  };
+
   const value = {
-    // Player state
+
     currentSong,
     isPlaying,
     volume,
@@ -217,25 +225,26 @@ export function MusicProvider({ children }) {
     currentTime,
     duration,
 
-    // Spotify data
+
     searchResults,
     searchQuery,
     isLoading,
     error,
 
-    // Cloudinary data
+
     cloudinarySongs,
     filteredCloudinarySongs,
     cloudinarySearchQuery,
 
-    // Functions
+
     togglePlay,
     toggleMute,
     handleVolumeChange,
     handleProgressChange,
     playSong,
     searchSpotify,
-    searchCloudinary
+    searchCloudinary,
+    playRandomSong
   };
 
   return <MusicContext.Provider value={value}>{children}</MusicContext.Provider>;

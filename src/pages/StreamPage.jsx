@@ -9,7 +9,8 @@ function StreamPage() {
     searchCloudinary,
     playSong,
     currentSong,
-    isPlaying
+    isPlaying,
+    playRandomSong
   } = useMusic();
 
   const [inputValue, setInputValue] = useState(cloudinarySearchQuery);
@@ -159,7 +160,7 @@ function StreamPage() {
     <div className="stream-page-container">
       <div className="page-header">
         <h1 className="page-title">Stream Music</h1>
-        <p className="page-subtitle">Listen to your favorite songs from our collection</p>
+        <p className="page-subtitle">Discover and play your favorite tracks</p>
       </div>
 
       <div className="search-container">

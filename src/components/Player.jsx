@@ -1,4 +1,4 @@
-import { FaPlay, FaPause, FaVolumeUp, FaVolumeMute, FaStepBackward, FaStepForward } from 'react-icons/fa';
+import { FaPlay, FaPause, FaVolumeUp, FaVolumeMute, FaStepBackward, FaStepForward, FaRandom } from 'react-icons/fa';
 import { useMusic } from '../context/MusicContext';
 import { useEffect, useRef, useState } from 'react';
 
@@ -14,7 +14,11 @@ function Player() {
     togglePlay,
     toggleMute,
     handleVolumeChange,
-    handleProgressChange
+    handleProgressChange,
+    cloudinarySongs,
+    playRandomSong,
+    playNext,
+    playPrevious
   } = useMusic();
 
   const [visualizerBars, setVisualizerBars] = useState([]);
@@ -60,6 +64,22 @@ function Player() {
     if (index % 3 === 0) return 'var(--primary)';
     if (index % 3 === 1) return 'var(--purple-accent)';
     return 'var(--blue-accent)';
+  };
+
+  const handlePlayPause = () => {
+    togglePlay();
+  };
+
+  const handleRandomPlay = () => {
+    playRandomSong();
+  };
+
+  const handlePrevious = () => {
+    playPrevious();
+  };
+
+  const handleNext = () => {
+    playNext();
   };
 
   return (
@@ -110,12 +130,12 @@ function Player() {
 
       <div className="player-controls">
         <div className="control-buttons">
-          <button className="control-button">
-            <FaStepBackward size={18} />
+          <button className="control-button" onClick={handlePrevious}>
+            <FaStepBackward />
           </button>
           <button
             className="play-button"
-            onClick={togglePlay}
+            onClick={handlePlayPause}
             style={{
               background: 'linear-gradient(135deg, var(--primary) 0%, var(--purple-accent) 100%)',
               width: '40px',
@@ -131,8 +151,27 @@ function Player() {
           >
             {isPlaying ? <FaPause size={16} /> : <FaPlay size={16} style={{ marginLeft: '2px' }} />}
           </button>
-          <button className="control-button">
-            <FaStepForward size={18} />
+          <button className="control-button" onClick={handleNext}>
+            <FaStepForward />
+          </button>
+          <button
+            className="control-button"
+            onClick={handleRandomPlay}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              width: '32px',
+              height: '32px',
+              borderRadius: '50%',
+              background: 'rgba(255, 255, 255, 0.1)',
+              border: '1px solid rgba(255, 255, 255, 0.2)',
+              color: 'var(--text-primary)',
+              transition: 'all 0.3s ease',
+              marginLeft: '10px'
+            }}
+          >
+            <FaRandom size={14} />
           </button>
         </div>
 
@@ -225,11 +264,18 @@ function Player() {
           display: flex;
           align-items: center;
           justify-content: center;
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+          background: rgba(255, 255, 255, 0.1);
+          border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .control-button:hover {
           color: var(--purple-accent);
-          transform: scale(1.2);
+          transform: scale(1.1);
+          background: rgba(255, 255, 255, 0.15);
+          border-color: rgba(255, 255, 255, 0.3);
         }
 
         .play-button {
@@ -333,6 +379,26 @@ function Player() {
           }
           100% {
             height: 5px;
+          }
+        }
+
+        @media (max-width: 768px) {
+          .control-buttons {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 10px;
+          }
+
+          .control-button {
+            width: 36px;
+            height: 36px;
+          }
+
+          .play-button {
+            width: 44px;
+            height: 44px;
           }
         }
       `}</style>
