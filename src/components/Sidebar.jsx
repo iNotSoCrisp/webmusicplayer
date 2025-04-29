@@ -12,6 +12,7 @@ function Sidebar() {
   };
 
   // Close sidebar when route changes on mobile
+  // mobile shit and all
   useEffect(() => {
     if (isMobile) {
       setIsExpanded(false);

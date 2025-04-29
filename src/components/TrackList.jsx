@@ -72,10 +72,10 @@ function TrackList({ tracks, title }) {
                   onClick={(e) => {
                     e.stopPropagation();
                     if (isCurrentTrack) {
-                      // Toggle play/pause for current track
+                      // play/pause
                       useMusic().togglePlay();
                     } else {
-                      // Play this track
+                      // Play abhi wala track
                       playSong(track);
                     }
                   }}

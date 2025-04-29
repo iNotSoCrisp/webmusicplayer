@@ -6,7 +6,7 @@ function MusicCard({ id, name, description, cover }) {
   const [isHovered, setIsHovered] = useState(false);
   const { isPlaying, currentSong, playPlaylist } = useMusic();
 
-  // Check if this playlist is currently active
+
   const isThisPlaying = isPlaying && currentSong?.album === name;
 
   const handlePlayClick = (e) => {

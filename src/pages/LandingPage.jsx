@@ -8,7 +8,7 @@ function LandingPage() {
   const [videoLoaded, setVideoLoaded] = useState(false);
 
   useEffect(() => {
-    // Ensure smooth loading transition
+    // smoooothhhh loading
     const timer = setTimeout(() => {
       setIsLoaded(true);
       document.documentElement.classList.add('loaded');
@@ -26,7 +26,7 @@ function LandingPage() {
 
   return (
     <div className="landing-page">
-      {/* Background Video */}
+
       <div className="video-background">
         <video
           className={`background-video ${videoLoaded ? 'loaded' : ''}`}

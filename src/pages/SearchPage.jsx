@@ -16,18 +16,18 @@ function SearchPage() {
   const [animatedResults, setAnimatedResults] = useState([]);
   const [hoveredTrack, setHoveredTrack] = useState(null);
 
- 
+
   useEffect(() => {
     setAnimatedResults([]);
 
     if (searchResults.length > 0) {
       const animateResults = async () => {
         const newResults = [];
-        // Add each result with a small delay
-        for (let i = 0; i < searchResults.length && i < 10; i++) { // Limit to top 10
+      
+        for (let i = 0; i < searchResults.length && i < 10; i++) { //top 10 results limit karne ke liye
           newResults.push(searchResults[i]);
           setAnimatedResults([...newResults]);
-          // Small delay between items
+
           await new Promise(resolve => setTimeout(resolve, 50));
         }
       };
