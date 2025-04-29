@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { BrowserRouter as Router, Routes, Route, NavLink, Navigate } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, NavLink, Navigate, useNavigate } from 'react-router-dom'
 import Sidebar from './components/Sidebar'
 import Player from './components/Player'
 import HomePage from './pages/HomePage'
@@ -8,18 +8,48 @@ import StreamPage from './pages/StreamPage'
 import ContactPage from './pages/ContactPage'
 import LandingPage from './pages/LandingPage'
 import { MusicProvider } from './context/MusicContext'
-import { FaHome, FaSearch, FaStream, FaEnvelope } from 'react-icons/fa'
+import { FaHome, FaSearch, FaStream, FaEnvelope, FaArrowLeft } from 'react-icons/fa'
 import './App.css'
+
+function MobileBackButton() {
+  const navigate = useNavigate();
+  return (
+    <button
+      onClick={() => navigate('/')}
+      style={{
+        position: 'fixed',
+        top: '20px',
+        left: '20px',
+        zIndex: 1000,
+        background: 'rgba(26, 27, 31, 0.8)',
+        backdropFilter: 'blur(10px)',
+        border: '1px solid rgba(255, 255, 255, 0.1)',
+        borderRadius: '50%',
+        width: '40px',
+        height: '40px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        color: 'var(--text-primary)',
+        cursor: 'pointer',
+        boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)',
+        transition: 'all 0.3s ease'
+      }}
+    >
+      <FaArrowLeft size={18} />
+    </button>
+  );
+}
 
 function App() {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
-  // Set document title
+
   useEffect(() => {
     document.title = 'BeatProbe - Music Experience'
   }, [])
 
-  // Handle window resize for responsive design
+
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
@@ -33,12 +63,13 @@ function App() {
     <Router>
       <MusicProvider>
         <Routes>
-          {/* Make landing page the default route */}
+
           <Route path="/" element={<LandingPage />} />
 
-          {/* Nested routes for the app's main layout */}
+
           <Route path="/app/*" element={
             <div className="app-container">
+              {isMobile && <MobileBackButton />}
               <Sidebar />
 
               {isMobile && (
@@ -64,7 +95,7 @@ function App() {
                   <Route path="/search" element={<SearchPage />} />
                   <Route path="/stream" element={<StreamPage />} />
                   <Route path="/contact" element={<ContactPage />} />
-                  {/* Redirect /app to /app/home */}
+
                   <Route path="/" element={<Navigate to="/app/home" replace />} />
                 </Routes>
               </div>
@@ -72,7 +103,7 @@ function App() {
             </div>
           } />
 
-          {/* Redirect old routes to new structure */}
+
           <Route path="/landing" element={<Navigate to="/" replace />} />
           <Route path="/home" element={<Navigate to="/app/home" replace />} />
           <Route path="/search" element={<Navigate to="/app/search" replace />} />
