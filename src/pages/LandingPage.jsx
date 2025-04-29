@@ -55,11 +55,12 @@ function LandingPage() {
           </div>
 
           <h2 className="welcome-title">
-            A brand new <span className="accent">lofi</span> experience
+            Explore songs. Play what’s possible.
+             <span className="accent"></span>
           </h2>
 
           <p className="welcome-subtitle">
-            Immerse yourself in the perfect ambience
+            
           </p>
 
           <button
