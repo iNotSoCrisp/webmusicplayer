@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaGithub, FaPlay } from 'react-icons/fa';
+import { FaPlay } from 'react-icons/fa';
 
 function LandingPage() {
   const navigate = useNavigate();
@@ -8,7 +8,7 @@ function LandingPage() {
   const [videoLoaded, setVideoLoaded] = useState(false);
 
   useEffect(() => {
-    // Ensure smooth loading transition
+    // Tranition lag fix karne ke liye
     const timer = setTimeout(() => {
       setIsLoaded(true);
       document.documentElement.classList.add('loaded');
@@ -26,8 +26,8 @@ function LandingPage() {
 
   return (
     <div className="landing-page">
-      {/* Background Video */}
       <div className="video-background">
+        
         <video
           className={`background-video ${videoLoaded ? 'loaded' : ''}`}
           autoPlay
@@ -69,16 +69,6 @@ function LandingPage() {
             <FaPlay className="play-icon" />
             <span>Get Started</span>
           </button>
-
-          <a
-            href="https://github.com/yourusername/beatprobe"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="github-link"
-          >
-            <FaGithub size={16} />
-            <span>View on GitHub</span>
-          </a>
         </div>
       </main>
 
@@ -223,21 +213,6 @@ function LandingPage() {
 
         .play-icon {
           font-size: 1rem;
-        }
-
-        .github-link {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 0.5rem;
-          color: rgba(255, 255, 255, 0.7);
-          text-decoration: none;
-          font-size: 1rem;
-          transition: all 0.3s ease;
-        }
-
-        .github-link:hover {
-          color: white;
         }
 
         @media (max-width: 768px) {
