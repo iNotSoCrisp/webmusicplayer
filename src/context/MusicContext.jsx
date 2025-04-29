@@ -215,6 +215,24 @@ export function MusicProvider({ children }) {
     }
   };
 
+  const playNext = () => {
+    if (cloudinarySongs.length > 0) {
+      const currentIndex = cloudinarySongs.findIndex(song => song.id === currentSong?.id);
+      const nextIndex = currentIndex >= cloudinarySongs.length - 1 ? 0 : currentIndex + 1;
+      const nextSong = cloudinarySongs[nextIndex];
+      playSong(nextSong);
+    }
+  };
+
+  const playPrevious = () => {
+    if (cloudinarySongs.length > 0) {
+      const currentIndex = cloudinarySongs.findIndex(song => song.id === currentSong?.id);
+      const previousIndex = currentIndex <= 0 ? cloudinarySongs.length - 1 : currentIndex - 1;
+      const previousSong = cloudinarySongs[previousIndex];
+      playSong(previousSong);
+    }
+  };
+
   const value = {
 
     currentSong,
@@ -244,7 +262,9 @@ export function MusicProvider({ children }) {
     playSong,
     searchSpotify,
     searchCloudinary,
-    playRandomSong
+    playRandomSong,
+    playNext,
+    playPrevious
   };
 
   return <MusicContext.Provider value={value}>{children}</MusicContext.Provider>;

@@ -383,22 +383,110 @@ function Player() {
         }
 
         @media (max-width: 768px) {
+          .player {
+            padding: 15px 10px;
+            position: fixed;
+            bottom: 60px;
+            left: 0;
+            right: 0;
+            background: rgba(13, 15, 27, 0.95);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 999;
+          }
+
           .control-buttons {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            padding: 10px;
+            gap: 15px;
+            padding: 10px 0;
+            margin: 0 auto;
+            max-width: 300px;
           }
 
           .control-button {
-            width: 36px;
-            height: 36px;
+            width: 40px !important;
+            height: 40px !important;
+            margin: 0 !important;
+            background: rgba(255, 255, 255, 0.1) !important;
+            border: 1px solid rgba(255, 255, 255, 0.2) !important;
+            color: var(--text-primary) !important;
+            font-size: 16px;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            border-radius: 50% !important;
+            transition: all 0.3s ease !important;
+          }
+
+          .control-button svg {
+            width: 16px;
+            height: 16px;
           }
 
           .play-button {
-            width: 44px;
-            height: 44px;
+            width: 48px !important;
+            height: 48px !important;
+            margin: 0 12px !important;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--purple-accent) 100%) !important;
+            border: none !important;
+            box-shadow: 0 0 15px rgba(255, 0, 57, 0.3) !important;
+          }
+
+          .play-button svg {
+            width: 18px;
+            height: 18px;
+            color: white;
+          }
+
+          .song-info {
+            flex-direction: row;
+            align-items: center;
+            margin-bottom: 12px;
+            padding: 0 5px;
+          }
+
+          .song-image-container {
+            width: 45px;
+            height: 45px;
+            margin-right: 10px;
+            border-radius: 8px;
+          }
+
+          .song-details {
+            flex: 1;
+            min-width: 0;
+          }
+
+          .song-details h4 {
+            font-size: 14px;
+            margin: 0 0 2px 0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+
+          .song-details p {
+            font-size: 12px;
+            margin: 0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            opacity: 0.8;
+          }
+
+          .volume-controls {
+            display: none;
+          }
+
+          input[type="range"] {
+            height: 4px;
+            margin: 8px 0;
+          }
+
+          .player-controls {
+            padding: 0 5px;
           }
         }
       `}</style>
