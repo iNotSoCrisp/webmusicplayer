@@ -4,9 +4,9 @@ import { FaEnvelope, FaGithub, FaLinkedin } from 'react-icons/fa';
 function ContactPage() {
   const email = 'shubhikr@proton.me';
   const githubUsername = 'iNotSoCrisp';
-  const developerNote = ''; 
+  const developerNote = '';
 
-  // Animation on mount
+  // Khulne par Animation
   useEffect(() => {
     const cards = document.querySelectorAll('.contact-card');
     cards.forEach((card, index) => {
