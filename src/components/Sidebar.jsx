@@ -38,7 +38,9 @@ function Sidebar() {
   return (
     <div className={`sidebar ${isExpanded ? 'expanded' : ''}`}>
       <div className="logo" onClick={toggleSidebar}>
-        <FaStream size={24} />
+        <div className="logo-icon">
+          <img src="/vite.svg" alt="BeatProbe Logo" className="logo-image" />
+        </div>
         <span>BeatProbe</span>
         <div className="mobile-toggle">
           {isExpanded ? <FaTimes size={20} /> : <FaBars size={20} />}
@@ -50,7 +52,7 @@ function Sidebar() {
         className="landing-link"
         onClick={() => setIsExpanded(false)}
       >
-        <FaArrowLeft size={18} />
+        <FaArrowLeft size={16} />
         <span>Back to Landing</span>
       </NavLink>
 
@@ -60,7 +62,7 @@ function Sidebar() {
           className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
           onClick={() => setIsExpanded(false)}
         >
-          <FaHome size={20} />
+          <FaHome size={16} />
           <span>Home</span>
         </NavLink>
 
@@ -69,7 +71,7 @@ function Sidebar() {
           className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
           onClick={() => setIsExpanded(false)}
         >
-          <FaSearch size={20} />
+          <FaSearch size={16} />
           <span>Search</span>
         </NavLink>
 
@@ -78,7 +80,7 @@ function Sidebar() {
           className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
           onClick={() => setIsExpanded(false)}
         >
-          <FaStream size={20} />
+          <FaStream size={16} />
           <span>Stream</span>
         </NavLink>
 
@@ -87,7 +89,7 @@ function Sidebar() {
           className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
           onClick={() => setIsExpanded(false)}
         >
-          <FaEnvelope size={20} />
+          <FaEnvelope size={16} />
           <span>Contact</span>
         </NavLink>
       </nav>
@@ -105,6 +107,34 @@ function Sidebar() {
           align-items: center;
           gap: 1rem;
           cursor: pointer;
+        }
+
+        .logo-icon {
+          width: 40px;
+          height: 40px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 8px;
+          background: var(--background-secondary);
+          padding: 8px;
+          box-shadow: 0 0 10px rgba(0, 102, 255, 0.2);
+        }
+
+        .logo-image {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          filter: drop-shadow(0 0 4px rgba(0, 102, 255, 0.5));
+        }
+
+        .logo span {
+          font-size: 1.2rem;
+          font-weight: 600;
+          background: linear-gradient(45deg, #0066FF, #9933FF);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          text-shadow: 0 0 10px rgba(0, 102, 255, 0.2);
         }
 
         .landing-link {

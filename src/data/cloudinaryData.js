@@ -89,5 +89,68 @@ export const streamableSongs = [
     artist: "Bayaan",
     cover: "https://res.cloudinary.com/dkyknciiv/image/upload/v1745177664/lro79wm1urkkpvivikcr.jpg",
     audioUrl: "https://res.cloudinary.com/dkyknciiv/video/upload/v1745177502/Bayaan_Hasan_Raheem_Rovalio_-_Maand_Lyric_Video_cih00s.mp3"
+  },
+  {
+    id: "cloud14",
+    title: "Astronomy",
+    artist: "Conan Gray",
+    cover: "https://res.cloudinary.com/dkyknciiv/image/upload/v1745889030/Astronomy_-_Conan_Gray_qulgqj.jpg",
+    audioUrl: "https://res.cloudinary.com/dkyknciiv/video/upload/v1745888994/SpotifyMate.com_-_Astronomy_-_Conan_Gray_uig6sw.mp3"
+  },
+  {
+    id: "cloud15",
+    title: "Can't Get You Out of My Head",
+    artist: "Gotye",
+    cover: "https://res.cloudinary.com/dkyknciiv/image/upload/v1745889030/SpotifyMate.com_-_Can_t_Get_You_out_Of_My_Head_-_Glimmer_of_Blooms_vlirsv.jpg",
+    audioUrl: "https://res.cloudinary.com/dkyknciiv/video/upload/v1745888994/SpotifyMate.com_-_Can_t_Get_You_out_Of_My_Head_-_Glimmer_of_Blooms_uypwgx.mp3"
+  },
+  {
+    id: "cloud16",
+    title: "Jo Bhi Main",
+    artist: "Mohit Chauhan",
+    cover: "https://res.cloudinary.com/dkyknciiv/image/upload/v1745889031/SpotifyMate.com_-_Jo_Bhi_Main_-_Mohit_Chauhan_tmwati.jpg",
+    audioUrl: "https://res.cloudinary.com/dkyknciiv/video/upload/v1745889027/SpotifyMate.com_-_Jo_Bhi_Main_-_Mohit_Chauhan_aasddr.mp3"
+  },
+  {
+    id: "cloud17",
+    title: "The Real Slim Shady",
+    artist: "Eminem",
+    cover: "https://res.cloudinary.com/dkyknciiv/image/upload/v1745889031/SpotifyMate.com_-_The_Real_Slim_Shady_-_Eminem_dqhihg.jpg",
+    audioUrl: "https://res.cloudinary.com/dkyknciiv/video/upload/v1745889010/SpotifyMate.com_-_The_Real_Slim_Shady_-_Eminem_blcnvz.mp3"
+  },
+  {
+    id: "cloud18",
+    title: "Double Take",
+    artist: "Dhruv",
+    cover: "https://res.cloudinary.com/dkyknciiv/image/upload/v1745889032/SpotifyMate.com_-_double_take_-_Dhruv_rrped5.jpg",
+    audioUrl: "https://res.cloudinary.com/dkyknciiv/video/upload/v1745889000/SpotifyMate.com_-_double_take_-_Dhruv_uh2j5n.mp3"
+  },
+  {
+    id: "cloud19",
+    title: "Dhundhala",
+    artist: "Yashraj",
+    cover: "https://res.cloudinary.com/dkyknciiv/image/upload/v1745889031/SpotifyMate.com_-_Dhundhala_-_Yashraj_uu4ohd.jpg",
+    audioUrl: "https://res.cloudinary.com/dkyknciiv/video/upload/v1745888994/SpotifyMate.com_-_Dhundhala_-_Yashraj_ifakn2.mp3"
+  },
+  {
+    id: "cloud20",
+    title: "Meherban",
+    artist: "JANI",
+    cover: "https://res.cloudinary.com/dkyknciiv/image/upload/v1745065427/hqdefault_dtkgoh.jpg",
+    audioUrl: "https://res.cloudinary.com/dkyknciiv/video/upload/v1745889004/SpotifyMate.com_-_Meherban_-_JANI_yh4lpl.mp3"
+  },
+  {
+    id: "cloud21",
+    title: "Everybody Dies in Their Nightmares",
+    artist: "XXXTENTACION",
+    cover: "https://res.cloudinary.com/dkyknciiv/image/upload/v1745889031/SpotifyMate.com_-_Everybody_Dies_In_Their_Nightmares_-_XXXTENTACION_mrzbxk.jpg",
+    audioUrl: "https://res.cloudinary.com/dkyknciiv/video/upload/v1745888992/SpotifyMate.com_-_Everybody_Dies_In_Their_Nightmares_-_XXXTENTACION_ozpmqg.mp3"
+  },
+  {
+    id: "cloud22",
+    title: "Bas Tu Dikhti Hai",
+    artist: "Aditya Kumar",
+    cover: "https://res.cloudinary.com/dkyknciiv/image/upload/v1745889030/Bas_Tu_Dikhti_Hai_-_Aditya_Kumar_avafyg.jpg",
+    audioUrl: "https://res.cloudinary.com/dkyknciiv/video/upload/v1745889007/SpotifyMate.com_-_Bas_Tu_Dikhti_Hai_-_Aditya_Kumar_shwnvo.mp3"
   }
 ];
