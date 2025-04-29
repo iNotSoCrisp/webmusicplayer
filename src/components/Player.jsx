@@ -228,6 +228,29 @@ function Player() {
             justify-content: center;
             gap: 12px;
             padding: 8px 0;
+            margin: 0 auto;
+          }
+
+          .control-button {
+            width: 36px !important;
+            height: 36px !important;
+            background: rgba(255, 255, 255, 0.1) !important;
+            border: 1px solid rgba(255, 255, 255, 0.2) !important;
+            color: var(--text-primary) !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            border-radius: 50% !important;
+            margin: 0 !important;
+          }
+
+          .play-button {
+            width: 42px !important;
+            height: 42px !important;
+            margin: 0 12px !important;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--purple-accent) 100%) !important;
+            border: none !important;
+            box-shadow: 0 0 15px rgba(255, 0, 57, 0.3) !important;
           }
 
           .song-info {
@@ -248,6 +271,10 @@ function Player() {
 
           input[type="range"] {
             height: 3px;
+          }
+
+          .player-controls {
+            padding: 0 5px;
           }
         }
       `}</style>
