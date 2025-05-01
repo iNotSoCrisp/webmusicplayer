@@ -243,5 +243,41 @@ export const streamableSongs = [
     artist: "Pritam",
     cover: "https://res.cloudinary.com/dkyknciiv/image/upload/v1745178149/artworks-000051031006-p3q9qo-t500x500_vvwoan.jpg",
     audioUrl: "https://res.cloudinary.com/dkyknciiv/video/upload/v1745177505/Kabira_Full_Song_Yeh_Jawaani_Hai_Deewani_Pritam_Ranbir_Kapoor_Deepika_Padukone_d2w8gp.mp3"
-  }
+  },
+  {
+  id: "cloud36",
+  title: "VYANJAN",
+  artist: "KR$NA",
+  cover: "https://res.cloudinary.com/dkyknciiv/image/upload/v1746131364/286f97c81ce734b5e3b74a31e7c67c7b.1000x1000x1_wqes9h.jpg",
+  audioUrl: "https://res.cloudinary.com/dkyknciiv/video/upload/v1746131394/KR_NA_-_VYANJAN_Hindi_Alphabetic_Rap_gkoamn.mp3"
+},
+{
+  id: "cloud37",
+  title: "DEHSHAT HO",
+  artist: "Raftaar, Yashraj",
+  cover: "https://res.cloudinary.com/dkyknciiv/image/upload/v1746131971/SpotifyMate.com_-_DEHSHAT_HO_-_Raftaar_kebbj9.jpg",
+  audioUrl: "https://res.cloudinary.com/dkyknciiv/video/upload/v1746131984/SpotifyMate.com_-_DEHSHAT_HO_-_Raftaar_mlxoev.mp3"
+},
+{
+  id: "cloud38",
+  title: "death bed (coffee for your head)",
+  artist: "Powfu, beabadoobee",
+  cover: "https://res.cloudinary.com/dkyknciiv/image/upload/v1746132603/ab67616d0000b273bf01fd0986a195d485922167_hthrme.jpg",
+  audioUrl: "https://res.cloudinary.com/dkyknciiv/video/upload/v1746132625/SpotifyMate.com_-_death_bed__coffee_for_your_head__-_Powfu_kutnlk.mp3"
+},
+{
+  id: "cloud39",
+  title: "Time in a Bottle",
+  artist: "Jim Croce",
+  cover: "https://res.cloudinary.com/dkyknciiv/image/upload/v1746132857/ab67616d0000b273d304904d87ec572f712abc59_filot3.jpg",
+  audioUrl: "https://res.cloudinary.com/dkyknciiv/video/upload/v1746132848/SpotifyMate.com_-_Time_in_a_Bottle_-_Jim_Croce_g0xhbw.mp3"
+},
+{
+  id: "cloud40",
+  title: "SHIKWA",
+  artist: "Talhah Yunus",
+  cover: "https://res.cloudinary.com/dkyknciiv/image/upload/v1746133279/ab67616d0000b273749fb00e5cc049b04ea3b398_tic1cn.jpg",
+  audioUrl: "https://res.cloudinary.com/dkyknciiv/video/upload/v1746133297/SpotifyMate.com_-_SHIKWA_-_Talhah_Yunus_oxrdei.mp3"
+},
+
 ];
