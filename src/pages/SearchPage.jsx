@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { FaSearch, FaTimes, FaSpinner, FaMusic, FaCompactDisc, FaPlay } from 'react-icons/fa';
+import { FaSearch, FaTimes, FaSpinner, FaMusic } from 'react-icons/fa';
 import { useMusic } from '../context/MusicContext';
 
 function SearchPage() {
@@ -14,8 +14,6 @@ function SearchPage() {
 
   const [inputValue, setInputValue] = useState(searchQuery);
   const [animatedResults, setAnimatedResults] = useState([]);
-  const [hoveredTrack, setHoveredTrack] = useState(null);
-
 
   useEffect(() => {
     setAnimatedResults([]);
@@ -23,11 +21,9 @@ function SearchPage() {
     if (searchResults.length > 0) {
       const animateResults = async () => {
         const newResults = [];
-      
-        for (let i = 0; i < searchResults.length && i < 10; i++) { //top 10 results limit karne ke liye
+        for (let i = 0; i < searchResults.length && i < 10; i++) {
           newResults.push(searchResults[i]);
           setAnimatedResults([...newResults]);
-
           await new Promise(resolve => setTimeout(resolve, 50));
         }
       };
@@ -46,149 +42,78 @@ function SearchPage() {
     searchSpotify('');
   };
 
-  // Get a random accent color for each track
-  const getAccentColor = (id) => {
-    // Create a pseudo-random but consistent color based on id
-    const sum = id.split('').reduce((sum, char) => sum + char.charCodeAt(0), 0);
-    const colors = ['var(--primary)', 'var(--purple-accent)', 'var(--blue-accent)', 'var(--accent)'];
-    return colors[sum % colors.length];
-  };
-
   return (
     <div className="search-page-container">
-      <div className="page-header">
-        <h1 className="page-title">Search for Music</h1>
-        <p className="page-subtitle">Discover your favorite songs on Spotify</p>
-      </div>
+      <h1 className="page-title">Search for Music</h1>
+      <p className="page-subtitle">Discover your favorite songs on Spotify</p>
 
-      <div className="search-container">
-        <FaSearch className="search-icon" />
+      <div className="search-global">
         <input
-          className="search-input"
           type="text"
-          placeholder="Search for songs or artists on Spotify..."
+          placeholder="Search for songs or artists..."
           value={inputValue}
           onChange={handleChange}
+          aria-label="Search songs"
         />
-        {inputValue && (
+        {inputValue && !isLoading && (
           <button className="clear-button" onClick={clearSearch}>
-            {isLoading ? (
-              <FaSpinner style={{ animation: 'spin 1s linear infinite' }} />
-            ) : (
-              <FaTimes size={16} />
-            )}
+            <FaTimes />
           </button>
+        )}
+        {isLoading && (
+          <div className="loading-indicator">
+            <FaSpinner className="spinning" />
+          </div>
         )}
       </div>
 
-      {error && (
-        <div className="error-message">
-          <span>{error}</span>
-        </div>
-      )}
-
-      <div>
-        {isLoading && !animatedResults.length ? (
-          <div className="loading-container">
-            <div className="loading-record">
-              <FaCompactDisc size={60} className="spinning-disc" />
-              <div className="record-center"></div>
-              <div className="record-pulses">
-                <span></span>
-                <span></span>
-                <span></span>
-              </div>
-            </div>
-            <div className="loading-text">Searching Spotify...</div>
+      <div className="results-section">
+        {error && (
+          <div className="error-message">
+            <span>{error}</span>
           </div>
-        ) : (
-          <>
-            {searchQuery && (
-              <h2 style={{ fontSize: '22px', fontWeight: 'bold', marginBottom: '16px', marginTop: '30px' }}>
-                Top Results for "{searchQuery}"
-              </h2>
-            )}
-
-            {!searchQuery && (
-              <div className="empty-search">
-                <div className="search-icon-large">
-                  <FaSearch style={{ fontSize: '50px', color: 'var(--purple-accent)', opacity: 0.6 }} />
-                  <div className="glow-effect"></div>
-                </div>
-                <p>Search for your favorite songs and artists</p>
-                <p style={{ fontSize: '14px', marginTop: '10px', color: 'var(--accent)' }}>
-                  Results from Spotify
-                </p>
-              </div>
-            )}
-
-            {searchQuery && animatedResults.length === 0 && !isLoading && (
-              <div className="empty-results">
-                <p>No results found for "{searchQuery}"</p>
-                <p style={{ fontSize: '14px', marginTop: '10px' }}>Try another search term</p>
-              </div>
-            )}
-
-            <div className="search-results-table">
-              {animatedResults.length > 0 && (
-                <div className="search-results-header">
-                  <div className="header-number">#</div>
-                  <div className="header-title">Title</div>
-                  <div className="header-duration">Duration</div>
-                </div>
-              )}
-
-              <div className="search-results-list">
-                {animatedResults.map((track, index) => (
-                  <div
-                    key={track.id}
-                    className="search-result-row"
-                    style={{
-                      opacity: 0,
-                      animation: `fadeInUp 0.5s forwards ${index * 0.08}s`
-                    }}
-                    onMouseEnter={() => setHoveredTrack(track.id)}
-                    onMouseLeave={() => setHoveredTrack(null)}
-                    onClick={() => playSong(track)}
-                  >
-                    <div className="track-number">
-                      {hoveredTrack === track.id ? (
-                        <FaPlay size={10} color="var(--text-primary)" />
-                      ) : (
-                        <span>{index + 1}</span>
-                      )}
-                    </div>
-
-                    <div className="track-info-container">
-                      <div className="track-image-small">
-                        {track.cover ? (
-                          <img
-                            src={track.cover}
-                            alt={track.title}
-                            className="track-image"
-                          />
-                        ) : (
-                          <div className="track-image-placeholder">
-                            <FaMusic size={16} />
-                          </div>
-                        )}
-                      </div>
-
-                      <div className="track-details">
-                        <div className="track-title">{track.title}</div>
-                        <div className="track-artist">{track.artist}</div>
-                      </div>
-                    </div>
-
-                    <div className="track-duration">
-                      {track.duration}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </>
         )}
+
+        {!searchQuery && !isLoading && (
+          <div className="empty-search">
+            <div className="search-icon-large">
+              <FaSearch />
+            </div>
+            <p>Results from Spotify</p>
+          </div>
+        )}
+
+        {searchQuery && animatedResults.length === 0 && !isLoading && (
+          <div className="empty-results">
+            <p>No results found for "{searchQuery}"</p>
+            <p>Try another search term</p>
+          </div>
+        )}
+
+        <div className="search-results">
+          {animatedResults.map((track) => (
+            <div
+              key={track.id}
+              className="search-result-item"
+              onClick={() => playSong(track)}
+            >
+              <div className="track-image">
+                {track.cover ? (
+                  <img src={track.cover} alt={track.title} />
+                ) : (
+                  <div className="track-image-placeholder">
+                    <FaMusic />
+                  </div>
+                )}
+              </div>
+              <div className="track-info">
+                <div className="track-title">{track.title}</div>
+                <div className="track-artist">{track.artist}</div>
+              </div>
+              <div className="track-duration">{track.duration}</div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

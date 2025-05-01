@@ -4,25 +4,56 @@ import { FaSearch, FaStream, FaEnvelope } from 'react-icons/fa';
 
 const HomePage = () => {
   return (
-    <div className="home-page-container">
-      <div className="home-grid">
-        <Link to="/search" className="home-card">
-          <FaSearch className="icon" />
-          <h2>Search</h2>
-          <p>Discover your next favorite lofi track</p>
-        </Link>
+    <div className="home-container">
+      <div className="home-content">
+        <div className="home-header">
+          <h1 className="home-title">Welcome to BeatProbe</h1>
+          <p className="home-subtitle"></p>
+        </div>
 
-        <Link to="/stream" className="home-card">
-          <FaStream className="icon" />
-          <h2>Stream</h2>
-          <p>Listen to the latest lofi releases</p>
-        </Link>
+        <section className="featured-section">
+          <h2 className="section-title">Quick Access</h2>
+          <div className="featured-grid">
+            <Link to="/app/search" className="featured-card">
+              <div className="featured-content">
+                <FaSearch size={30} style={{ marginBottom: '1rem', color: '#0066FF' }} />
+                <h3 className="featured-title">Search</h3>
+                <p className="featured-description">
+                  Search for any song on spotify
+                </p>
+                <button className="featured-button">
+                  Explore Now
+                </button>
+              </div>
+            </Link>
 
-        <Link to="/contact" className="home-card">
-          <FaEnvelope className="icon" />
-          <h2>Contact</h2>
-          <p>Get in touch with us</p>
-        </Link>
+            <Link to="/app/stream" className="featured-card">
+              <div className="featured-content">
+                <FaStream size={30} style={{ marginBottom: '1rem', color: '#9933FF' }} />
+                <h3 className="featured-title">Stream</h3>
+                <p className="featured-description">
+                  Listen to my curated list
+                </p>
+                <button className="featured-button">
+                  Start Listening
+                </button>
+              </div>
+            </Link>
+
+            <Link to="/app/contact" className="featured-card">
+              <div className="featured-content">
+                <FaEnvelope size={30} style={{ marginBottom: '1rem', color: '#FF3366' }} />
+                <h3 className="featured-title">Contact</h3>
+                <p className="featured-description">
+                  Please check this page for more information
+                </p>
+                <button className="featured-button">
+                  Reach Out
+                </button>
+              </div>
+            </Link>
+          </div>
+        </section>
       </div>
     </div>
   );

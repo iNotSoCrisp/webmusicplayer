@@ -151,10 +151,25 @@ export function MusicProvider({ children }) {
     }
   };
 
-  const handleProgressChange = (newProgress) => {
+  const handleProgressChange = (e) => {
+    const newProgress = parseFloat(e.target.value);
     setProgress(newProgress);
     if (currentAudio) {
-      currentAudio.currentTime = (newProgress / 100) * currentAudio.duration;
+      const time = (newProgress / 100) * currentAudio.duration;
+      currentAudio.currentTime = time;
+      setCurrentTime(convertSecondsToTime(Math.floor(time)));
+    }
+  };
+
+  const handleProgressChangeEnd = (e) => {
+    const newProgress = parseFloat(e.target.value);
+    if (currentAudio) {
+      const time = (newProgress / 100) * currentAudio.duration;
+      currentAudio.currentTime = time;
+      setCurrentTime(convertSecondsToTime(Math.floor(time)));
+      if (isPlaying) {
+        currentAudio.play();
+      }
     }
   };
 
@@ -259,6 +274,7 @@ export function MusicProvider({ children }) {
     toggleMute,
     handleVolumeChange,
     handleProgressChange,
+    handleProgressChangeEnd,
     playSong,
     searchSpotify,
     searchCloudinary,

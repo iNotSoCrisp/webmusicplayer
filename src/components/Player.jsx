@@ -1,3 +1,4 @@
+import React from 'react';
 import { FaPlay, FaPause, FaVolumeUp, FaVolumeMute, FaStepBackward, FaStepForward, FaRandom } from 'react-icons/fa';
 import { useMusic } from '../context/MusicContext';
 
@@ -14,34 +15,13 @@ function Player() {
     toggleMute,
     handleVolumeChange,
     handleProgressChange,
-    playRandomSong,
+    handleProgressChangeEnd,
     playNext,
-    playPrevious
+    playPrevious,
+    playRandomSong
   } = useMusic();
 
-  const onVolumeChange = (e) => {
-    handleVolumeChange(parseInt(e.target.value));
-  };
-
-  const onProgressChange = (e) => {
-    handleProgressChange(parseInt(e.target.value));
-  };
-
-  const handlePlayPause = () => {
-    togglePlay();
-  };
-
-  const handleRandomPlay = () => {
-    playRandomSong();
-  };
-
-  const handlePrevious = () => {
-    playPrevious();
-  };
-
-  const handleNext = () => {
-    playNext();
-  };
+  if (!currentSong) return null;
 
   return (
     <div className="player">
@@ -79,19 +59,20 @@ function Player() {
 
       <div className="player-controls">
         <div className="control-buttons">
-          <button className="control-button" onClick={handlePrevious}>
+          <button className="control-button" onClick={playPrevious}>
             <FaStepBackward size={16} />
           </button>
           <button
-            className="play-button"
-            onClick={handlePlayPause}
+            className="player-play-button"
+            onClick={togglePlay}
+            aria-label={isPlaying ? 'Pause' : 'Play'}
           >
-            {isPlaying ? <FaPause size={16} /> : <FaPlay size={16} style={{ marginLeft: '2px' }} />}
+            {isPlaying ? <FaPause size={20} /> : <FaPlay size={20} style={{ marginLeft: '3px' }} />}
           </button>
-          <button className="control-button" onClick={handleNext}>
+          <button className="control-button" onClick={playNext}>
             <FaStepForward size={16} />
           </button>
-          <button className="control-button" onClick={handleRandomPlay}>
+          <button className="control-button" onClick={playRandomSong}>
             <FaRandom size={14} />
           </button>
         </div>
@@ -103,7 +84,9 @@ function Player() {
             min="0"
             max="100"
             value={progress}
-            onChange={onProgressChange}
+            onChange={handleProgressChange}
+            onMouseUp={handleProgressChangeEnd}
+            onTouchEnd={handleProgressChangeEnd}
             style={{
               width: '100%',
               height: '4px',
@@ -119,7 +102,7 @@ function Player() {
       </div>
 
       <div className="volume-controls">
-        <button onClick={toggleMute} style={{ color: 'var(--text-primary)' }}>
+        <button onClick={toggleMute} style={{ color: 'var(--text-primary)', background: 'none', border: 'none', cursor: 'pointer' }}>
           {isMuted || volume === 0 ? <FaVolumeMute size={16} /> : <FaVolumeUp size={16} />}
         </button>
         <input
@@ -127,7 +110,7 @@ function Player() {
           min="0"
           max="100"
           value={isMuted ? 0 : volume}
-          onChange={onVolumeChange}
+          onChange={(e) => handleVolumeChange(parseInt(e.target.value))}
           style={{
             width: '80px',
             height: '4px',
@@ -152,30 +135,33 @@ function Player() {
           justify-content: center;
           color: var(--text-primary);
           cursor: pointer;
-          transition: background-color 0.2s ease;
+          transition: all 0.2s ease;
         }
 
         .control-button:hover {
           background: rgba(255, 255, 255, 0.15);
+          transform: scale(1.05);
         }
 
-        .play-button {
+        .player-play-button {
           background: linear-gradient(135deg, var(--primary) 0%, var(--purple-accent) 100%);
           border: none;
           border-radius: 50%;
-          width: 42px;
-          height: 42px;
+          width: 45px;
+          height: 45px;
           display: flex;
           align-items: center;
           justify-content: center;
           color: white;
           cursor: pointer;
           margin: 0 12px;
-          transition: opacity 0.2s ease;
+          transition: all 0.2s ease;
+          box-shadow: 0 0 15px rgba(255, 0, 57, 0.3);
         }
 
-        .play-button:hover {
-          opacity: 0.9;
+        .player-play-button:hover {
+          transform: scale(1.1);
+          box-shadow: 0 0 20px rgba(255, 0, 57, 0.4);
         }
 
         .song-image-container {
@@ -244,9 +230,9 @@ function Player() {
             margin: 0 !important;
           }
 
-          .play-button {
-            width: 42px !important;
-            height: 42px !important;
+          .player-play-button {
+            width: 45px !important;
+            height: 45px !important;
             margin: 0 12px !important;
             background: linear-gradient(135deg, var(--primary) 0%, var(--purple-accent) 100%) !important;
             border: none !important;
@@ -276,6 +262,43 @@ function Player() {
           .player-controls {
             padding: 0 5px;
           }
+        }
+
+        input[type="range"] {
+          -webkit-appearance: none;
+          height: 4px;
+          background: transparent;
+          cursor: pointer;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+          -webkit-appearance: none;
+          width: 12px;
+          height: 12px;
+          border-radius: 50%;
+          background: var(--primary);
+          cursor: pointer;
+          border: none;
+          margin-top: -4px;
+          box-shadow: 0 0 10px rgba(255, 0, 57, 0.3);
+        }
+
+        input[type="range"]::-moz-range-thumb {
+          width: 12px;
+          height: 12px;
+          border-radius: 50%;
+          background: var(--primary);
+          cursor: pointer;
+          border: none;
+          box-shadow: 0 0 10px rgba(255, 0, 57, 0.3);
+        }
+
+        input[type="range"]:hover::-webkit-slider-thumb {
+          transform: scale(1.2);
+        }
+
+        input[type="range"]:hover::-moz-range-thumb {
+          transform: scale(1.2);
         }
       `}</style>
     </div>
